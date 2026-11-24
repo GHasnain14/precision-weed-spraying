@@ -30,12 +30,27 @@ The spray logic has unit tests (`tests/test_spray.py`), for example: a perfect c
 
 ## Results
 
-*To be filled in after the Colab run.* `results/` will contain:
+MobileNetV3-Large, official fold 0, trained for 12 epochs on a Colab T4 GPU (about 100 s per epoch).
 
-- `classification_metrics.json`: accuracy, macro-F1, recall per species
-- `spray_report.json`: threshold, weeds missed, herbicide use, speed limit
-- `spray_tradeoff.png`: herbicide used vs weeds missed
-- `confusion_matrix.png`
+**Classification (test set, 3,507 images):** accuracy 97.2 %, macro-F1 0.962. For reference, the DeepWeeds paper reports 95.7 % for ResNet-50, averaged over all five folds; this is a single fold, so the two numbers are not a strict comparison. Snake weed is the hardest class (88 % recall), mostly confused with Chinee apple.
+
+![Confusion matrix](results/confusion_matrix.png)
+
+**Spray decisions.** The threshold is chosen on the validation set, then applied to the test set:
+
+| Recall target (val) | Weeds missed (test) | Clean patches sprayed | Herbicide vs blanket at 10 % weed cover | at 25 % |
+|---|---|---|---|---|
+| 90 % | 9.0 % | 0.6 % | 9.6 % | 23.2 % |
+| 95 % | 4.5 % | 0.7 % | 10.1 % | 24.4 % |
+| 98 % | 1.7 % | 2.0 % | 11.6 % | 26.1 % |
+
+At the 95 % setting, a field with 10 % weed cover gets about one tenth of the herbicide of blanket spraying, and 4.5 % of weeds are missed. The ideal would be exactly 10 % (spray every weed and nothing else), so the model wastes very little. The real limit is missed weeds: Snake weed (8.8 % missed) and Prickly acacia (6.6 %) slip through most often. Asking for 98 % recall cuts misses to 1.7 % for a small increase in spraying.
+
+![Trade-off](results/spray_tradeoff.png)
+
+**Speed.** 32.5 ms per image on 2 CPU threads and 8.2 ms on a T4 GPU. With the assumed 0.45 m image footprint, that allows about 50 km/h on the CPU and 197 km/h on the GPU. Inference time is unlikely to be the bottleneck; camera exposure, valve delay and locating the weed inside the image would be.
+
+Validation accuracy was still improving at epoch 12, so a longer run would probably gain a little more.
 
 ## Run it
 
