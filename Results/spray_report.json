@@ -1,0 +1,82 @@
+{
+ "recall_target_0.90": {
+  "target_recall_on_val": 0.9,
+  "threshold": 0.9766,
+  "test": {
+   "weeds_sprayed (recall)": 0.9104,
+   "weeds_missed": 0.0896,
+   "clean_patches_sprayed (FPR)": 0.0055,
+   "missed_by_species": {
+    "Chinee apple": 0.1106,
+    "Lantana": 0.0845,
+    "Parkinsonia": 0.029,
+    "Parthenium": 0.0488,
+    "Prickly acacia": 0.1174,
+    "Rubber vine": 0.0792,
+    "Siam weed": 0.093,
+    "Snake weed": 0.152
+   },
+   "herbicide_use_vs_blanket": {
+    "dataset density 0.48": 0.4403,
+    "density 0.05": 0.0507,
+    "density 0.10": 0.096,
+    "density 0.25": 0.2317
+   }
+  }
+ },
+ "recall_target_0.95": {
+  "target_recall_on_val": 0.95,
+  "threshold": 0.8704,
+  "test": {
+   "weeds_sprayed (recall)": 0.9549,
+   "weeds_missed": 0.0451,
+   "clean_patches_sprayed (FPR)": 0.0066,
+   "missed_by_species": {
+    "Chinee apple": 0.0575,
+    "Lantana": 0.0282,
+    "Parkinsonia": 0.0048,
+    "Parthenium": 0.0244,
+    "Prickly acacia": 0.0657,
+    "Rubber vine": 0.0495,
+    "Siam weed": 0.0419,
+    "Snake weed": 0.0882
+   },
+   "herbicide_use_vs_blanket": {
+    "dataset density 0.48": 0.4622,
+    "density 0.05": 0.054,
+    "density 0.10": 0.1014,
+    "density 0.25": 0.2437
+   }
+  }
+ },
+ "recall_target_0.98": {
+  "target_recall_on_val": 0.98,
+  "threshold": 0.4331,
+  "test": {
+   "weeds_sprayed (recall)": 0.9834,
+   "weeds_missed": 0.0166,
+   "clean_patches_sprayed (FPR)": 0.0198,
+   "missed_by_species": {
+    "Chinee apple": 0.0221,
+    "Lantana": 0.0047,
+    "Parkinsonia": 0.0,
+    "Parthenium": 0.0098,
+    "Prickly acacia": 0.0188,
+    "Rubber vine": 0.0198,
+    "Siam weed": 0.0186,
+    "Snake weed": 0.0392
+   },
+   "herbicide_use_vs_blanket": {
+    "dataset density 0.48": 0.4827,
+    "density 0.05": 0.0679,
+    "density 0.10": 0.1161,
+    "density 0.25": 0.2607
+   }
+  }
+ },
+ "speed_limit_kmh": {
+  "cpu": 49.8,
+  "gpu": 196.8
+ },
+ "footprint_m_assumed": 0.45
+}

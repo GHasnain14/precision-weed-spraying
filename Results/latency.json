@@ -1,0 +1,10 @@
+{
+ "cpu": {
+  "ms_per_image": 32.54,
+  "threads": 2
+ },
+ "gpu": {
+  "ms_per_image": 8.23,
+  "name": "Tesla T4"
+ }
+}
